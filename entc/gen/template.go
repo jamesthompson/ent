@@ -5,6 +5,7 @@
 package gen
 
 import (
+	"log"
 	"bytes"
 	"embed"
 	"errors"
@@ -338,7 +339,8 @@ func (t *Template) AddParseTree(name string, tree *parse.Tree) (*Template, error
 // and panics if the error is non-nil.
 func MustParse(t *Template, err error) *Template {
 	if err != nil {
-		panic(err)
+		log.Printf("ENCOUNTERED ERROR: %v", err)
+		log.Printf("Template: %v", t)
 	}
 	return t
 }
